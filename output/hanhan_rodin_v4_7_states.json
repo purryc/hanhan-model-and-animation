@@ -1,0 +1,231 @@
+{
+  "version": "4.7",
+  "fps": 30,
+  "blend_seconds": 0.2,
+  "asset": "hanhan_rodin_v4_7.glb",
+  "coordinate_system": "glTF: Y up, character faces +Z; gaze x right, y up",
+  "states": {
+    "awaken": {
+      "label": "休眠唤醒",
+      "duration": 2,
+      "loop": false,
+      "next": "idle",
+      "props": []
+    },
+    "idle": {
+      "label": "空闲待命",
+      "duration": 4,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "listen": {
+      "label": "聆听中",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "think": {
+      "label": "思考中",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "speak": {
+      "label": "说话中",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "briefing": {
+      "label": "标题解释",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": [
+        "prop_clipboard"
+      ]
+    },
+    "working": {
+      "label": "正在干活",
+      "duration": 2,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "progress": {
+      "label": "查看进度",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": [
+        "prop_magnifier"
+      ]
+    },
+    "alert": {
+      "label": "收到提醒",
+      "duration": 2.4,
+      "loop": true,
+      "next": null,
+      "props": [
+        "prop_bell"
+      ]
+    },
+    "review": {
+      "label": "检查结果",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": [
+        "prop_clipboard",
+        "prop_pencil",
+        "prop_monocle"
+      ]
+    },
+    "decision": {
+      "label": "作出决定",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "pause": {
+      "label": "我来处理",
+      "duration": 4,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "resume": {
+      "label": "接着做",
+      "duration": 2.4,
+      "loop": false,
+      "next": "working",
+      "props": [
+        "prop_cuff_l",
+        "prop_cuff_r"
+      ]
+    },
+    "error": {
+      "label": "错误异常",
+      "duration": 3,
+      "loop": true,
+      "next": null,
+      "props": []
+    },
+    "playful": {
+      "label": "逗趣",
+      "duration": 2.4,
+      "loop": false,
+      "next": "idle",
+      "props": []
+    }
+  },
+  "controls": {
+    "gaze": [
+      -1,
+      1
+    ],
+    "speech_level": [
+      0,
+      1
+    ]
+  },
+  "budget": {
+    "triangles": 20000,
+    "deform_bones": 48,
+    "draw_calls": 8,
+    "texture_size": 1024,
+    "glb_bytes": 5242880
+  },
+  "source": "Hyper3D Rodin Gen-1.5; local rig and animation",
+  "runtime_gaze_scale": [
+    0.032,
+    0.024
+  ],
+  "interaction": {
+    "touch_duration": 1.8,
+    "touch_cooldown": 1.2
+  },
+  "default_props_visible": true,
+  "visemes": [
+    "A",
+    "E",
+    "I",
+    "O",
+    "U"
+  ],
+  "hair_physics": {
+    "solver": "spring_mass_guide_v1",
+    "bones": [
+      {
+        "name": "fur_0",
+        "length": 0.5531726479530334
+      },
+      {
+        "name": "fur_1",
+        "length": 0.5531727075576782
+      },
+      {
+        "name": "fur_2",
+        "length": 0.5531727075576782
+      },
+      {
+        "name": "fur_3",
+        "length": 0.5531726479530334
+      },
+      {
+        "name": "fur_4",
+        "length": 0.5531726479530334
+      },
+      {
+        "name": "fur_5",
+        "length": 0.5531727075576782
+      },
+      {
+        "name": "fur_6",
+        "length": 0.5531727075576782
+      },
+      {
+        "name": "fur_7",
+        "length": 0.5531726479530334
+      }
+    ],
+    "stiffness": 145,
+    "damping": 13,
+    "max_offset": 0.085,
+    "collision_radius": 0.9,
+    "center": [
+      0,
+      1.22,
+      0
+    ],
+    "gravity": 0.12
+  },
+  "gaze_surface": {
+    "shapes": [
+      "gaze_left",
+      "gaze_right",
+      "gaze_up",
+      "gaze_down"
+    ],
+    "eye_response": 19,
+    "head_response": 4,
+    "head_yaw": 0.045,
+    "head_pitch": 0.026,
+    "head_pitch_down": 0.065,
+    "down_gain": 1.6,
+    "down_scale": 0.043,
+    "down_forward": 0.009,
+    "down_priority": true,
+    "head_states": {
+      "idle": 1,
+      "listen": 0.55,
+      "speak": 1,
+      "working": 0.35
+    }
+  }
+}

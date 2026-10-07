@@ -1,0 +1,18 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {HanhanController} from '../src/hanhan_controller.js';
+globalThis.self=globalThis;globalThis.createImageBitmap=async()=>({width:512,height:512,close(){}});
+const data=await fs.readFile(new URL('../public/assets/hanhan_rodin_v4_5.glb',import.meta.url));
+const manifest=JSON.parse(await fs.readFile(new URL('../public/assets/hanhan_rodin_v4_5_states.json',import.meta.url),'utf8'));
+async function load(){const gltf=await new GLTFLoader().parseAsync(data.buffer.slice(data.byteOffset,data.byteOffset+data.byteLength),'');return{gltf,c:new HanhanController(gltf,manifest)};}
+function step(c,s,dt=1/60){for(let i=0;i<Math.ceil(s/dt);i++)c.update(dt);}
+test('v4.5 preserves clips and rendering budgets',async()=>{const{gltf,c}=await load();assert.equal(gltf.animations.length,15);assert.ok(data.length<5242880);for(const n of manifest.gaze_surface.shapes)assert.ok(c.face.morphTargetDictionary[n]>=0);for(const state of Object.keys(manifest.states)){c.setState(state);step(c,.3);let tri=2,draw=1;c.root.traverse(o=>{if(o.isMesh&&o.visible){tri+=(o.geometry.index?.count??o.geometry.attributes.position.count)/3;draw+=Array.isArray(o.material)?o.material.length:1;}});assert.ok(tri<20000);assert.ok(draw<=8);}c.dispose();});
+test('white highlight moves relative to black eye geometry, with bounded corner weights',async()=>{const{c}=await load();const geo=c.face.geometry,pos=geo.attributes.position,col=geo.attributes.color,skin=geo.attributes.skinIndex;const bi=c.face.skeleton.bones.indexOf(c.eyes[0]);const white=[],black=[];
+ for(let i=0;i<pos.count;i++){if(skin.getX(i)!==bi)continue;if(col.getX(i)>.8)white.push(i);else black.push(i);}assert.ok(white.length>20);assert.ok(black.length>100);
+ let relativeShift=0;for(const name of manifest.gaze_surface.shapes){const morph=geo.morphAttributes.position[c.face.morphTargetDictionary[name]];const shift=ids=>ids.reduce((v,i)=>v.add(new THREE.Vector3().fromBufferAttribute(morph,i)),new THREE.Vector3()).divideScalar(ids.length);const ws=shift(white),bs=shift(black);relativeShift=Math.max(relativeShift,ws.distanceTo(bs));assert.ok(ws.length()<.03);assert.ok(ws.toArray().every(Number.isFinite));}assert.ok(relativeShift>.006);c.setGaze(1,1);step(c,.6);assert.ok(manifest.gaze_surface.shapes.reduce((v,n)=>v+c.morph(n),0)<=1.00001);c.dispose();});
+test('eyes lead head; contact poses and expressions protect authored acting',async()=>{const{c}=await load();step(c,.2);c.setGaze(1,.6);c.update(1/60);assert.ok(c.gazeSmooth.x>c.gazeSurface.head.x*3);step(c,.4);assert.ok(c.gazeSurface.head.x>.4);c.setState('review');step(c,.3);assert.equal(c.gazeSurface.before,null);c.currentAction.paused=true;
+ for(const expression of ['blink','happy','spiral']){c.faceBase.fill(0);c.faceBase[c.face.morphTargetDictionary[expression]]=1;c.update(1/60);for(const name of manifest.gaze_surface.shapes)assert.ok(c.morph(name)<.00001);}c.dispose();});
+test('held gaze and interrupts do not accumulate rotation; inactive clears head lag',async()=>{const{c}=await load();step(c,.3);c.currentAction.paused=true;c.setGaze(1,1);step(c,2);const q=c.body.quaternion.clone();step(c,10);assert.ok(q.angleTo(c.body.quaternion)<.0001);c.setActive(false);assert.equal(c.gazeSurface.before,null);assert.equal(c.gazeSurface.head.length(),0);c.setActive(true);for(let i=0;i<30;i++){c.setState(['speak','pause','error','idle'][i%4]);c.setGaze(i%2?1:-1,.5);step(c,.1);assert.ok(c.body.quaternion.toArray().every(Number.isFinite));}c.dispose();});

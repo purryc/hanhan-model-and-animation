@@ -1,0 +1,41 @@
+{
+  "source_reopened": true,
+  "glb_reimported": true,
+  "bones": 46,
+  "glb_bytes": 4629324,
+  "animations": 15,
+  "morphs": [
+    "Basis",
+    "blink",
+    "happy",
+    "squeeze",
+    "spiral",
+    "mouth_open",
+    "mouth_round",
+    "mouth_smile",
+    "mouth_frown",
+    "viseme_a",
+    "viseme_e",
+    "viseme_i",
+    "viseme_o",
+    "viseme_u",
+    "gaze_left",
+    "gaze_right",
+    "gaze_up",
+    "gaze_down"
+  ],
+  "textures": [
+    [
+      1024,
+      1024
+    ],
+    [
+      1024,
+      512
+    ],
+    [
+      512,
+      512
+    ]
+  ]
+}

@@ -1,0 +1,6 @@
+Tiny creatures sounds / laugh.ogg
+Author: fvcalderan
+Source: https://opengameart.org/content/tiny-creatures-sounds
+License: CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+Changes: high-pass / low-pass filtering, loudness normalization, edge fades, mono 24kHz PCM.
+Original preserved in reference/audio/tiny_creatures_laugh_original.ogg.

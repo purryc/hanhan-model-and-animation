@@ -1,0 +1,10 @@
+{
+  "title": "Tiny creatures sounds / laugh.ogg",
+  "author": "fvcalderan",
+  "license": "CC0 1.0",
+  "source": "https://opengameart.org/content/tiny-creatures-sounds",
+  "download": "https://opengameart.org/sites/default/files/laugh.ogg",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "processing": "high-pass, low-pass, loudness normalization, edge fades, mono 24kHz PCM",
+  "generation_credit_cost": 0
+}

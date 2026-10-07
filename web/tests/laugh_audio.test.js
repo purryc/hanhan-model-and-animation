@@ -1,0 +1,11 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {LaughAudio} from '../src/laugh_audio.js';
+function fixture({decode}={}){
+ const voices=[];const ctx={state:'suspended',currentTime:0,destination:{},resume:async()=>{ctx.state='running';},close:()=>{},decodeAudioData:decode??(async()=>({duration:1.73})),createGain:()=>({gain:{value:0},connect(){},disconnect(){}}),createAnalyser:()=>({fftSize:0,connect(){},getFloatTimeDomainData(a){a.fill(.1);}}),createBufferSource:()=>{const v={stopped:false,connect(){},disconnect(){},start(...a){this.started=a;},stop(){this.stopped=true;}};voices.push(v);return v;}};
+ let time=0;const audio=new LaughAudio('/laugh.wav',{contextFactory:()=>ctx,fetcher:async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(8)}),now:()=>time});return {audio,voices,advance:n=>time+=n};
+}
+test('hover before activation stays silent; gesture enables a real scheduled sample',async()=>{const{audio,voices}=fixture();assert.equal(await audio.play(),false);assert.equal(audio.status,'locked');await audio.unlock();assert.equal(await audio.play({delay:.18}),true);assert.deepEqual(voices[0].started,[.18,0]);assert.ok(audio.rms()>.09);audio.dispose();});
+test('laughs cannot overlap; mute and stop cancel the current sample',async()=>{const{audio,voices}=fixture();await audio.unlock();await audio.play();await audio.play({offset:.2});assert.equal(voices[0].stopped,true);audio.setEnabled(false);assert.equal(voices[1].stopped,true);assert.equal(audio.status,'muted');assert.equal(await audio.play(),false);audio.dispose();});
+test('a pending decode cannot play after pause/mute cancellation',async()=>{let done;const decoded=new Promise(r=>done=r);const{audio,voices}=fixture({decode:()=>decoded});await audio.unlock();const pending=audio.play();await Promise.resolve();audio.stop();done({duration:1.73});assert.equal(await pending,false);assert.equal(voices.length,0);audio.dispose();});
+test('slow loading drops an expired laugh rather than replaying it late',async()=>{let done;const decoded=new Promise(r=>done=r);const{audio,voices,advance}=fixture({decode:()=>decoded});await audio.unlock();const pending=audio.play();await Promise.resolve();advance(500);done({duration:1.73});assert.equal(await pending,false);assert.equal(voices.length,0);audio.dispose();});

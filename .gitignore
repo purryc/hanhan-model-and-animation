@@ -1,0 +1,12 @@
+.DS_Store
+node_modules/
+web/dist/
+*.blend1
+*.blend2
+__pycache__/
+*.pyc
+.env
+.env.*
+*.log
+.playwright-mcp/
+qa/publication/local_*

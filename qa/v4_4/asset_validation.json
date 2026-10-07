@@ -1,0 +1,275 @@
+{
+  "source_reopened": true,
+  "bone_count": 46,
+  "mixed_body_limb_vertices": 0,
+  "semantic_boundary_edges": 24,
+  "states": {
+    "awaken": {
+      "frames_sampled": 61,
+      "max_edge_stretch": 1.8167593551396586,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "idle": {
+      "frames_sampled": 121,
+      "max_edge_stretch": 1.6874271950584532,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "listen": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 1.6828233612844499,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "think": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 1.783808803842751,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "speak": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 1.6828165771574608,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "briefing": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 2.137870237371101,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "working": {
+      "frames_sampled": 61,
+      "max_edge_stretch": 2.0080808589612538,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "progress": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 2.0080816818845357,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "alert": {
+      "frames_sampled": 73,
+      "max_edge_stretch": 1.6828163919474979,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "review": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 2.132628898387131,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "decision": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 1.687428731487696,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "pause": {
+      "frames_sampled": 121,
+      "max_edge_stretch": 1.6874273740958483,
+      "minimum_z": 2.9802322387695312e-08
+    },
+    "resume": {
+      "frames_sampled": 73,
+      "max_edge_stretch": 2.008080778143923,
+      "minimum_z": -7.450580596923828e-08
+    },
+    "error": {
+      "frames_sampled": 91,
+      "max_edge_stretch": 1.9188824413298788,
+      "minimum_z": -1.7153070075437427e-08
+    },
+    "playful": {
+      "frames_sampled": 73,
+      "max_edge_stretch": 1.428674474635787,
+      "minimum_z": -1.7153070075437427e-08
+    }
+  },
+  "contact_intersections": {
+    "progress": {
+      "hand_boot_triangle_pairs": 0,
+      "worst_frame": 0
+    },
+    "review": {
+      "hand_boot_triangle_pairs": 0,
+      "worst_frame": 0
+    },
+    "decision": {
+      "hand_boot_triangle_pairs": 0,
+      "worst_frame": 0
+    },
+    "pause": {
+      "hand_boot_triangle_pairs": 0,
+      "worst_frame": 0
+    },
+    "resume": {
+      "hand_boot_triangle_pairs": 0,
+      "worst_frame": 0
+    }
+  },
+  "topology": {
+    "foot_r": {
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "foot_l": {
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "body": {
+      "boundary_edges": 0,
+      "nonmanifold_edges": 0
+    },
+    "arm": {
+      "boundary_edges": 24,
+      "nonmanifold_edges": 24
+    },
+    "hand_r": {
+      "boundary_edges": 12,
+      "nonmanifold_edges": 12
+    },
+    "hand_l": {
+      "boundary_edges": 12,
+      "nonmanifold_edges": 12
+    }
+  },
+  "minimum_mouth_surface_clearance": 0.010182321071624756,
+  "unexpected_semantic_boundary_edges": 0,
+  "round_shell": {
+    "outer_radius": 0.99,
+    "maximum_outer_radius_error": 0.008644567822832627,
+    "width": 1.9913411736488342,
+    "height": 1.9913411736488342
+  },
+  "glb_bytes": 4549884,
+  "mesh_budget": {
+    "hanhan_expression": [
+      1956,
+      1
+    ],
+    "hanhan_rodin_body": [
+      14234,
+      3
+    ],
+    "prop_bell": [
+      1632,
+      1
+    ],
+    "prop_clipboard": [
+      1296,
+      1
+    ],
+    "prop_cuff_l": [
+      729,
+      1
+    ],
+    "prop_cuff_r": [
+      729,
+      1
+    ],
+    "prop_magnifier": [
+      728,
+      1
+    ],
+    "prop_monocle": [
+      684,
+      1
+    ],
+    "prop_pencil": [
+      138,
+      1
+    ]
+  },
+  "state_budget": {
+    "awaken": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "idle": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "listen": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "think": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "speak": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "briefing": {
+      "triangles": 17486,
+      "draw_calls": 5
+    },
+    "working": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "progress": {
+      "triangles": 16918,
+      "draw_calls": 5
+    },
+    "alert": {
+      "triangles": 17822,
+      "draw_calls": 5
+    },
+    "review": {
+      "triangles": 18308,
+      "draw_calls": 7
+    },
+    "decision": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "pause": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "resume": {
+      "triangles": 17648,
+      "draw_calls": 6
+    },
+    "error": {
+      "triangles": 16190,
+      "draw_calls": 4
+    },
+    "playful": {
+      "triangles": 16190,
+      "draw_calls": 4
+    }
+  },
+  "animation_names": [
+    "awaken",
+    "idle",
+    "listen",
+    "think",
+    "speak",
+    "briefing",
+    "working",
+    "progress",
+    "alert",
+    "review",
+    "decision",
+    "pause",
+    "resume",
+    "error",
+    "playful"
+  ],
+  "no_external_uris": true,
+  "external_images_packed": true,
+  "glb_reimported": true,
+  "texture_dimensions": [
+    [
+      1024,
+      1024
+    ],
+    [
+      1024,
+      512
+    ],
+    [
+      512,
+      512
+    ]
+  ],
+  "technical_pass": true
+}

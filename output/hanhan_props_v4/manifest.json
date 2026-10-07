@@ -1,0 +1,90 @@
+{
+  "credit_cost": 0,
+  "assets": [
+    {
+      "name": "magnifier",
+      "file": "magnifier.glb",
+      "triangles": 728,
+      "grip": [
+        0,
+        0,
+        0.07
+      ],
+      "states": [
+        "progress"
+      ],
+      "draw_calls": 1
+    },
+    {
+      "name": "pencil",
+      "file": "pencil.glb",
+      "triangles": 138,
+      "grip": [
+        0,
+        0,
+        -0.04
+      ],
+      "states": [
+        "review"
+      ],
+      "draw_calls": 1
+    },
+    {
+      "name": "clipboard",
+      "file": "clipboard.glb",
+      "triangles": 1296,
+      "grip": [
+        0.145,
+        0.02,
+        -0.035
+      ],
+      "states": [
+        "review"
+      ],
+      "draw_calls": 1
+    },
+    {
+      "name": "monocle",
+      "file": "monocle.glb",
+      "triangles": 684,
+      "grip": [
+        0.0,
+        0.01,
+        0
+      ],
+      "states": [
+        "review"
+      ],
+      "draw_calls": 1
+    },
+    {
+      "name": "rolled_cuff",
+      "file": "rolled_cuff.glb",
+      "triangles": 1920,
+      "grip": [
+        0,
+        0,
+        0
+      ],
+      "states": [
+        "resume"
+      ],
+      "draw_calls": 1
+    },
+    {
+      "name": "bell",
+      "file": "bell.glb",
+      "triangles": 1632,
+      "grip": [
+        0,
+        0,
+        0.3
+      ],
+      "states": [
+        "alert"
+      ],
+      "draw_calls": 1
+    }
+  ],
+  "note": "Unrigged props. Actual hand/face fit pending final Rodin mesh."
+}

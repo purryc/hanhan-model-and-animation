@@ -1,0 +1,7 @@
+{
+  "model_provider": "Hyper3D Rodin",
+  "model": "Gen-1.5 V1.2 RLHF",
+  "reference_image": "hanhan_t_pose_v4.png",
+  "reconstruction": "Rodin base; local Blender refinement, props, rig, animation and mobile export",
+  "account_or_payment_data_included": false
+}

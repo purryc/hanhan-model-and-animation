@@ -1,0 +1,5 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {initialLanguage,messages,stateLabels,translate} from '../src/i18n.js';
+test('every UI message and animation label has both languages',()=>{assert.deepEqual(Object.keys(messages.zh).sort(),Object.keys(messages.en).sort());assert.deepEqual(Object.keys(stateLabels.zh).sort(),Object.keys(stateLabels.en).sort());assert.equal(Object.keys(stateLabels.en).length,15);for(const key of Object.keys(messages.zh)){assert.ok(messages.en[key].length);assert.deepEqual(messages.zh[key].match(/\{\w+\}/g)?.sort(),messages.en[key].match(/\{\w+\}/g)?.sort());}});
+test('shared URLs override saved language; invalid language falls back safely',()=>{assert.equal(initialLanguage({search:'?lang=en',saved:'zh'}),'en');assert.equal(initialLanguage({saved:'en',browserLanguage:'zh-CN'}),'en');assert.equal(initialLanguage({search:'?lang=fr',saved:'invalid',browserLanguage:'en-US'}),'en');assert.equal(initialLanguage({browserLanguage:'zh-TW'}),'zh');assert.equal(translate('en','recording',{index:2,total:15,state:'Idle'}),'Recording 2/15 · Idle');});
